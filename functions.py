@@ -72,3 +72,63 @@ def add(tasks, absolute_path):
     save_tasks(data, absolute_path)
     formatted_data = json.dumps(data, indent=4)
     print(formatted_data)
+
+def update(tasks, absolute_path):
+    update_description = sys.argv[3]
+    id_found = False
+    # Loading tasks to work on
+    try:
+        with open(absolute_path, "r") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Error: The specified file was not found.")
+        return
+    except json.JSONDecodeError:
+        print("Error: The JSON data is invalid.")
+        return
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return
+    # Comparing ID in JSON with the user one
+    for task in data:
+        try:
+            if int(task["id"]) == int(sys.argv[2]):
+                # Updating the description
+                task["description"] = update_description
+                id_found = True
+        except ValueError:
+            print("Error: Invalid ID format.")
+            return
+    if not id_found:
+        print("Error: No task found with the specified ID.")
+
+    save_tasks(data, absolute_path)
+    formatted_data = json.dumps(data, indent=4)
+    print(formatted_data)
+
+def delete(tasks, absolute_path):
+    # Load tasks to delete
+    try:
+        with open(absolute_path, "r") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print("Error: The specified file was not found.")
+        return
+    except json.JSONDecodeError:
+        print("Error: The JSON data is invalid.")
+        return
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return
+    
+    # Match ID in JSON with users
+    for index, task in enumerate(data):
+        try:
+            if int(task["id"]) == int(sys.argv[2]):
+                del data[index]
+        except ValueError:
+            print("Error: Invalid ID format.")
+            return
+    save_tasks(data, absolute_path)
+    formatted_data = json.dumps(data, indent=4)
+    print(formatted_data)   

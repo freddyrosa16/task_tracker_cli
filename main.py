@@ -1,6 +1,6 @@
 import sys
 import os
-from functions import load_tasks, add
+from functions import load_tasks, add, update, delete
 
 
 def main():
@@ -13,6 +13,12 @@ def main():
     if sys.argv[1] == "add":
         tasks = load_tasks(absolute_path)
         add(tasks, absolute_path)
+    elif sys.argv[1] == "update":
+        tasks = load_tasks(absolute_path)
+        update(tasks, absolute_path)
+    elif sys.argv[1] == "delete":
+        tasks = load_tasks(absolute_path)
+        delete(tasks, absolute_path)
 
 
 if __name__ == "__main__":
