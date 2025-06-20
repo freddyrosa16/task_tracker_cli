@@ -131,4 +131,37 @@ def delete(tasks, absolute_path):
             return
     save_tasks(data, absolute_path)
     formatted_data = json.dumps(data, indent=4)
-    print(formatted_data)   
+    print(formatted_data)
+
+def in_progress(tasks, absolute_path):
+    with open(absolute_path, "r") as f:
+        data = json.load(f)
+
+    for task in data:
+        try:
+            if int(task["id"]) == int(sys.argv[2]):
+                task["status"] = "in-progress"
+        except ValueError:
+            print("Error: Invalid ID format.")
+            return
+        
+    save_tasks(data, absolute_path)
+    formatted_data = json.dumps(data, indent=4)
+    print(formatted_data)
+
+def done(tasks, absolute_path):
+    with open(absolute_path, "r") as f:
+        data = json.load(f)
+
+    for task in data:
+        try:
+            if int(task["id"]) == int(sys.argv[2]):
+                task["status"] = "done"
+        except ValueError:
+            print("Error: Invalid ID format.")
+            return
+        
+    save_tasks(data, absolute_path)
+    formatted_data = json.dumps(data, indent=4)
+    print(formatted_data)
+

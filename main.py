@@ -1,6 +1,6 @@
 import sys
 import os
-from functions import load_tasks, add, update, delete
+from functions import load_tasks, add, update, delete, in_progress, done, list_tasks
 
 
 def main():
@@ -19,7 +19,12 @@ def main():
     elif sys.argv[1] == "delete":
         tasks = load_tasks(absolute_path)
         delete(tasks, absolute_path)
-
+    elif sys.argv[1] == "in-progress":
+        tasks = load_tasks(absolute_path)
+        in_progress(tasks, absolute_path)
+    elif sys.argv[1] == "done":
+        tasks = load_tasks(absolute_path)
+        done(tasks, absolute_path)
 
 if __name__ == "__main__":
     main()
