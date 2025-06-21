@@ -1,13 +1,13 @@
 import sys
 import os
-from functions import load_tasks, add, update, delete, in_progress, done, list_tasks
+from functions import load_tasks, add, update, delete, in_progress, done, listing
 
 
 def main():
     relative_path = "tasks.json"
     absolute_path = os.path.abspath(relative_path)
 
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         return
 
     if sys.argv[1] == "add":
@@ -25,6 +25,9 @@ def main():
     elif sys.argv[1] == "done":
         tasks = load_tasks(absolute_path)
         done(tasks, absolute_path)
+    elif sys.argv[1] == "list":
+        tasks = load_tasks(absolute_path)
+        listing(tasks, absolute_path)
 
 if __name__ == "__main__":
     main()

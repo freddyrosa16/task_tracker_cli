@@ -53,7 +53,7 @@ def add(tasks, absolute_path):
     description = sys.argv[2]
 
     # Status is always Todo when created
-    status = "Todo"
+    status = "todo"
 
     # Time of Creation and Updated
     current_datetime = datetime.now().isoformat()
@@ -96,6 +96,7 @@ def update(tasks, absolute_path):
                 # Updating the description
                 task["description"] = update_description
                 id_found = True
+                task["updatedAt"] = datetime.now().isoformat()
         except ValueError:
             print("Error: Invalid ID format.")
             return
@@ -141,6 +142,7 @@ def in_progress(tasks, absolute_path):
         try:
             if int(task["id"]) == int(sys.argv[2]):
                 task["status"] = "in-progress"
+                task["updatedAt"] = datetime.now().isoformat()
         except ValueError:
             print("Error: Invalid ID format.")
             return
@@ -157,6 +159,7 @@ def done(tasks, absolute_path):
         try:
             if int(task["id"]) == int(sys.argv[2]):
                 task["status"] = "done"
+                task["updatedAt"] = datetime.now().isoformat()
         except ValueError:
             print("Error: Invalid ID format.")
             return
@@ -164,4 +167,24 @@ def done(tasks, absolute_path):
     save_tasks(data, absolute_path)
     formatted_data = json.dumps(data, indent=4)
     print(formatted_data)
+
+def listing(tasks, absolute_path):
+    try:
+        with open(absolute_path, "r") as f:
+            data = json.load(f)
+
+        if len(sys.argv) > 2:
+            status = sys.argv[2]
+            for task in data:
+                if str(task.get("status")) == str(status):
+                    print(task)
+        else:
+            for task in data:
+                print(task)
+    except FileNotFoundError:
+        print("Error: The specified file was not found.")
+    except json.JSONDecodeError:
+        print("Error: The JSON data is invalid.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
