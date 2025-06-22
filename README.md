@@ -23,18 +23,15 @@ A command-line interface (CLI) tool for managing tasks. This application allows 
    cd task_tracker_cli
    ```
 2. Ensure you have Python 3 installed on your system.
-   ```
-
-   ```
 
 ## Usage
 
 Run the Application
 To run the application, use the following command structure:
 
-    ```bash
-    python3 main.py <command> [options]
-    ```
+```bash
+python3 main.py <command> [options]
+```
 
 ## Add a Task
 
