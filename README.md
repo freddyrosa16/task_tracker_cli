@@ -114,7 +114,7 @@ python3 main.py list todo
 Example Output
 When adding a task:
 
-````bash
+```bash
 $ python3 main.py add "Finish project report"
 [
 {
@@ -138,7 +138,7 @@ $ python3 main.py list
 "createdAt": "2023-06-22T08:35:23",
 "updatedAt": "2023-06-22T08:35:23"
 }
-````
+```
 
 ## Error Handling
 
@@ -148,10 +148,4 @@ The application includes error handling for:
 Invalid JSON data
 File not found scenarios
 Invalid command usage
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Copy
-
-Feel free to replace `<repository-url>` with the actual URL of your project repository!
 ```
