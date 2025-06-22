@@ -35,93 +35,86 @@ python3 main.py <command> [options]
 
 ## Add a Task
 
-    ```bash
-    python3 main.py add "Task description"
-    ```
-    Example:
-    ```bash
-    python3 main.py add "Finish project report"
-    ```
+```bash
+python3 main.py add "Task description"
+```
+
+Example:
+
+```bash
+python3 main.py add "Finish project report"
+```
 
 ## Update a Task
 
-    ```bash
-    python3 main.py update <task_id> "New description"
-    ```
-    Example:
-    ```bash
-    python3 main.py update 1 "Finish project report and send it to the manager"
-    ```
+```bash
+python3 main.py update <task_id> "New description"
+```
+
+Example:
+
+```bash
+python3 main.py update 1 "Finish project report and send it to the manager"
+```
 
 ## Delete a Task
 
 ```bash
-
-Copy
 python3 main.py delete <task_id>
-Example:
 ```
 
-```bash
+Example:
 
-Copy
+```bash
 python3 main.py delete 1
-Set Task In Progress
 ```
 
-```bash
+## Set Task In Progress
 
-Copy
+```bash
 python3 main.py in-progress <task_id>
-Example:
 ```
 
-```bash
+Example:
 
-Copy
+```bash
 python3 main.py in-progress 2
-Set Task as Done
 ```
 
-```bash
+## Set Task as Done
 
-Copy
+```bash
 python3 main.py done <task_id>
-Example:
 ```
 
-```bash
+Example:
 
-Copy
+```bash
 python3 main.py done 2
-List All Tasks
 ```
 
-```bash
+## List All Tasks
 
-Copy
+```bash
 python3 main.py list
-List Tasks by Status
 ```
 
-```bash
+## List Tasks by Status
 
-Copy
+```bash
 python3 main.py list <status>
-Example:
 ```
 
-```bash
+Example:
 
-Copy
+```bash
 python3 main.py list todo
+```
+
 Example Output
 When adding a task:
-```
 
-```bash
-
-Copy
+````bash
 $ python3 main.py add "Finish project report"
 [
 {
@@ -132,12 +125,10 @@ $ python3 main.py add "Finish project report"
 "updatedAt": "2023-06-22T08:35:23"
 }
 ]
+
 When listing tasks:
-```
 
 ```bash
-
-Copy
 $ python3 main.py list
 {
 "id": 1,
@@ -146,9 +137,13 @@ $ python3 main.py list
 "createdAt": "2023-06-22T08:35:23",
 "updatedAt": "2023-06-22T08:35:23"
 }
-Error Handling
+````
+
+## Error Handling
+
 The application includes error handling for:
 
+```bash
 Invalid JSON data
 File not found scenarios
 Invalid command usage
