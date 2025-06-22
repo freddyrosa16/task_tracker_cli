@@ -6,24 +6,21 @@ from datetime import datetime
 unavailable_id = set()
 
 def load_tasks(absolute_path):
-    if not os.path.exists(absolute_path):
+    if not os.path.exists(absolute_path) or os.path.getsize(absolute_path) == 0:
         with open(absolute_path, "w") as f:
             json.dump([], f)
-    else:
-        if os.path.getsize(absolute_path) == 0:
-            with open(absolute_path, "w") as f:
-                json.dump([], f)
-        try:
-            with open(absolute_path, "r") as f:
-                data = json.load(f)
-            if not isinstance(data, list):
-                with open(absolute_path, "w") as f:
-                    json.dump([], f)
-        except json.JSONDecodeError as e:
-            print("Invalid JSON:", e)
-            with open(absolute_path, "w") as f:
-                json.dump([], f)
-            print("It has been reset to []")
+    try:
+        with open(absolute_path, "r") as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            raise ValueError("Data is not a list.")
+        return data
+    except json.JSONDecodeError as e:
+        print("Invalid JSON:", e)
+        with open(absolute_path, "w") as f:
+            json.dump([], f)
+        print("It has been reset to []")
+        return []
 
 def save_tasks(tasks, absolute_path):
     with open(absolute_path, "w") as f:
@@ -33,8 +30,7 @@ def add(tasks, absolute_path):
     # Create an unique ID number
     global unavailable_id
     try:
-        with open(absolute_path, "r") as f:
-            data = json.load(f)
+        data = load_tasks(absolute_path)
     except FileNotFoundError:
         print("Error: The specified file was not found.")
         return
@@ -78,8 +74,7 @@ def update(tasks, absolute_path):
     id_found = False
     # Loading tasks to work on
     try:
-        with open(absolute_path, "r") as f:
-            data = json.load(f)
+        data = load_tasks(absolute_path)
     except FileNotFoundError:
         print("Error: The specified file was not found.")
         return
@@ -110,8 +105,7 @@ def update(tasks, absolute_path):
 def delete(tasks, absolute_path):
     # Load tasks to delete
     try:
-        with open(absolute_path, "r") as f:
-            data = json.load(f)
+        data = load_tasks(absolute_path)
     except FileNotFoundError:
         print("Error: The specified file was not found.")
         return
@@ -135,8 +129,7 @@ def delete(tasks, absolute_path):
     print(formatted_data)
 
 def in_progress(tasks, absolute_path):
-    with open(absolute_path, "r") as f:
-        data = json.load(f)
+    data = load_tasks(absolute_path)
 
     for task in data:
         try:
@@ -152,8 +145,7 @@ def in_progress(tasks, absolute_path):
     print(formatted_data)
 
 def done(tasks, absolute_path):
-    with open(absolute_path, "r") as f:
-        data = json.load(f)
+    data = load_tasks(absolute_path)
 
     for task in data:
         try:
@@ -170,8 +162,7 @@ def done(tasks, absolute_path):
 
 def listing(tasks, absolute_path):
     try:
-        with open(absolute_path, "r") as f:
-            data = json.load(f)
+        data = load_tasks(absolute_path)
 
         if len(sys.argv) > 2:
             status = sys.argv[2]
