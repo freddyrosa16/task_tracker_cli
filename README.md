@@ -125,6 +125,7 @@ $ python3 main.py add "Finish project report"
 "updatedAt": "2023-06-22T08:35:23"
 }
 ]
+```
 
 When listing tasks:
 
