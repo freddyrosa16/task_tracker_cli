@@ -1,7 +1,7 @@
 import os
 import json
-from task_tracker_cli.file_path import get_task_file_path
-from task_tracker_cli.save import save_tasks
+from file_path import get_task_file_path
+from save import save_tasks
 
 def load_tasks():
     file_path = get_task_file_path()
