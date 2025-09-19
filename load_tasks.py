@@ -1,10 +1,10 @@
 import os
 import json
-from file_path import get_task_file_path
+from file_path import get_tasks_file_path
 from save import save_tasks
 
 def load_tasks():
-    file_path = get_task_file_path()
+    file_path = get_tasks_file_path()
 
     if not os.path.exists(file_path):
         tasks = []

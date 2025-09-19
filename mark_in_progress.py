@@ -18,7 +18,7 @@ def mark_in_progress():
             if int(task["id"]) == argument_id:
                 found = True
                 task["status"] = "in-progress"
-                task["updatedAt"] = datetime.now().replace(minute=0, second=0, microsecond=0)
+                task["updatedAt"] = datetime.now().replace(minute=0, second=0, microsecond=0).isoformat()
                 save_tasks(tasks)
                 print("Status has been updated successfully.")
                 print(tasks)

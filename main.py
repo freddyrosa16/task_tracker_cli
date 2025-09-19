@@ -37,3 +37,6 @@ def main():
         listing()
     else:
         print(f"Unknown command: {command}")
+
+if __name__ == "__main__":
+    main()

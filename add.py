@@ -3,7 +3,7 @@ from load_tasks import load_tasks
 from datetime import datetime
 from save import save_tasks
 
-def add(description):
+def add():
     tasks = load_tasks()
     args = sys.argv[1:]
 
@@ -22,8 +22,8 @@ def add(description):
         "id": id_number,
         "description": description,
         "status": "todo",
-        "createdAt": datetime.now().replace(minute=0, second=0, microsecond=0),
-        "updatedAt": datetime.now().replace(minute=0, second=0, microsecond=0)
+        "createdAt": datetime.now().replace(minute=0, second=0, microsecond=0).isoformat(),
+        "updatedAt": datetime.now().replace(minute=0, second=0, microsecond=0).isoformat()
     }
 
     tasks.append(new_task)
