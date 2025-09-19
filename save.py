@@ -1,5 +1,5 @@
 import json
-from task_tracker_cli.file_path import get_task_file_path
+from file_path import get_task_file_path
 
 
 def save_tasks(tasks):
