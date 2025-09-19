@@ -6,28 +6,33 @@
 # Update the task via description
 
 
-import os
 import sys
+from add import add
+from update import update_task
+from delete import delete
+from mark_in_progress import mark_in_progress
+from mark_done import mark_done
+from list_tasks import listing
 
 def main():
     args = sys.argv[1:]
 
-    if len(args) < 2:
+    if len(args) < 1:
         print("Argument missing. Please Provide an extra argument.")
         return
     
     command = args[0]
-
+    
     if command == "add":
         add()
     elif command == "update":
-        update()
+        update_task()
     elif command == "delete":
         delete()
     elif command == "mark-in-progress":
-        mark()
+        mark_in_progress()
     elif command == "mark-done":
-        mark()
+        mark_done()
     elif command == "list":
         listing()
     else:

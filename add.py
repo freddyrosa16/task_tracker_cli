@@ -6,6 +6,11 @@ from save import save_tasks
 def add(description):
     tasks = load_tasks()
     args = sys.argv[1:]
+
+    if len(args) < 2:
+        print("Argument missing. Please Provide an extra argument.")
+        return
+    
     description = args[1]
 
     if tasks == []:

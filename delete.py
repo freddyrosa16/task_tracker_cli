@@ -7,6 +7,10 @@ def delete():
     args = sys.argv[1:]
     found = False
 
+    if len(args) < 2:
+        print("Argument missing. Please Provide an extra argument.")
+        return
+
     try:
         argument_id = int(args[1])
         for task in tasks:

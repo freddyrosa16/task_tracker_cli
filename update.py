@@ -6,8 +6,13 @@ from datetime import datetime
 def update_task(description):
     tasks = load_tasks()
     args = sys.argv[1:]
-    description = args[2]
     found = False
+
+    if len(args) < 3:
+        print("Argument missing. Please Provide an extra argument.")
+        return
+
+    description = args[2]
 
     try:
         argument_id = int(args[1])
