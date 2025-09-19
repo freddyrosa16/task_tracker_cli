@@ -1,6 +1,7 @@
 import sys
 from save import save_tasks
 from load_tasks import load_tasks
+from datetime import datetime
 
 def update_task(description):
     tasks = load_tasks()
@@ -14,6 +15,7 @@ def update_task(description):
             if int(task["id"]) == argument_id:
                 found = True
                 task["description"] = description
+                task["updatedAt"] = datetime.now().replace(minute=0, second=0, microsecond=0)
                 save_tasks(tasks)
                 print("Task updated successfully")
                 print(tasks)
