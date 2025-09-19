@@ -1,6 +1,4 @@
-import json
 import sys
-from file_path import get_task_file_path
 from load_tasks import load_tasks
 from datetime import datetime
 from save import save_tasks
@@ -27,3 +25,4 @@ def add(description):
     save_tasks(tasks)
 
     print("Task added successfully")
+    print(tasks)
