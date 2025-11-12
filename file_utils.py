@@ -53,3 +53,5 @@ def load_tasks(file_path):
             data = json.load(file)
     except Exception as e:
         print(f"Error: {e}")
+        return None
+    return data
