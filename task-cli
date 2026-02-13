@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import sys
+from add import add
+from update import update
+from delete import delete
+from mark_in_progress import mark_in_progress
+from mark_done import mark_done
+from listing import lists
+
+
+def main():
+    file_path = "tasks.json"
+    args = sys.argv[1:]
+    if len(args) < 1:
+        print("Error: no command provided: ./task-cli <argument> <description / id>")
+        sys.exit(1)
+
+    if args[0] == "add":
+        print(add(file_path))
+    if args[0] == "update":
+        print(update(file_path))
+    if args[0] == "delete":
+        print(delete(file_path))
+    if args[0] == "mark-in-progress":
+        print(mark_in_progress(file_path))
+    if args[0] == "mark-done":
+        print(mark_done(file_path))
+    if args[0] == "list":
+        print(lists(file_path))
+
+
+if __name__ == "__main__":
+    main()
