@@ -11,7 +11,7 @@ def main():
         print("Usage: python3 main.py <command> <id> <some description>")
 
     if args[0] == "add":
-        print(add(file_path))
+        print(add(file_path, args))
 
 
 if "__main__" == __name__:
