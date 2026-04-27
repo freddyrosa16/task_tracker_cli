@@ -1,6 +1,5 @@
 import datetime
 import json
-import sys
 
 from load_tasks import load_tasks
 
