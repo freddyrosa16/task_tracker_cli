@@ -28,3 +28,4 @@ def load_tasks(file_path):
 
     except Exception as e:
         print(f"Error: {e}")
+        return []
