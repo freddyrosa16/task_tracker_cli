@@ -11,6 +11,6 @@ def update(file_path, args):
         if int(task["id"]) == int(args[1]):
             task["description"] = args[2]
             task["updatedAt"] = datetime.datetime.now().isoformat()
-        with open(file_path, "w") as file:
-            json.dump(task, file)
+    with open(file_path, "w") as file:
+        json.dump(tasks, file, indent=4)
     return tasks
