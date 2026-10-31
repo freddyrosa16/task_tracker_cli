@@ -6,7 +6,7 @@ def mark_in_progress(file_path, task_id):
     tasks = load_tasks(file_path)
     for task in tasks:
         if int(task["id"]) == int(task_id):
-            task["status"] = "in-process"
+            task["status"] = "in-progress"
     save_tasks(file_path, tasks)
     return tasks
 
